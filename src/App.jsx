@@ -16,7 +16,7 @@ window.addEventListener('click', async () => {
 
 function App() {
   const [frequency, setFrequency] = useState('waiting for frequency')
-  let pitch: any
+  let pitch
 
   useEffect(() => {
     pitch = ml5.pitchDetection('./crepe/', audioContext, audioStream, () => {
@@ -26,7 +26,7 @@ function App() {
   }, [])
 
   function getPitch() {
-    pitch.getPitch((err: any, frequency: any) => {
+    pitch.getPitch((err, frequency) => {
       if (err) console.log(err)
       if (frequency) {
         setFrequency(frequency)
